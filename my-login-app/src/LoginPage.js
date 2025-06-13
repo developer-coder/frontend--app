@@ -57,7 +57,9 @@ function LoginPage() {
     const productPort = 3002;
     const targetUrl = `${window.location.protocol}//${window.location.hostname}:${productPort}`;
     window.location.href = targetUrl;
-      } else {
+      } 
+    }
+    else {
         setMessage(`❌ ${text}`);
       }
     } catch (error) {
