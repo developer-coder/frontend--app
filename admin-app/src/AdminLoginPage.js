@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import keycloak from "./keycloak";
 
 function AdminLoginPage() {
@@ -29,18 +29,16 @@ function AdminLoginPage() {
 
   const fetchAdminProfile = async () => {
     if (roles.includes(requiredRole)) {
-		
-		setTimeout(() => {
-    const productPort = 3000;
-    const targetUrl = `${window.location.protocol}//${window.location.hostname}:${productPort}`;
-    window.location.href = targetUrl;
-      
+      setTimeout(() => {
+        const productPort = 3000;
+        const targetUrl = `${window.location.protocol}//${window.location.hostname}:${productPort}`;
+        window.location.href = targetUrl;
+      }, 1000);
     } else {
       setMessage("Access denied: You do not have permission to view this page.");
     }
   };
 
-  // User is logged in but does not have access role
   if (keycloak.authenticated && !roles.includes(requiredRole)) {
     return (
       <div style={{ maxWidth: "800px", margin: "auto", padding: "20px", color: "red" }}>
@@ -58,10 +56,9 @@ function AdminLoginPage() {
       {keycloak.authenticated ? (
         <>
           <p><strong>Username:</strong> {username}</p>
-         
+
           <div style={{ marginBottom: "10px", color: "green" }}>{message}</div>
 
-          {/* Only show button to users with 'admin-login-access' role */}
           {roles.includes(requiredRole) && (
             <>
               <button onClick={fetchAdminProfile}>Add Product and Fetch Product List</button>
