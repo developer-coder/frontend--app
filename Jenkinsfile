@@ -18,7 +18,7 @@ pipeline {
                         dir(app) {
                             echo "🔧 Building ${app}"
                             bat 'npm install'
-                            bat 'set CI=false && npm run build'
+                            bat 'npm run build'
                         }
                     }
                 }
