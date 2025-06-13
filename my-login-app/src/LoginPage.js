@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -8,8 +7,6 @@ function LoginPage() {
   const [message, setMessage] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
-//const navigate = useNavigate(); // used to navigate after login
 
   const validateInputs = () => {
     let isValid = true;
@@ -41,25 +38,22 @@ function LoginPage() {
       const response = await fetch("/api/users/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        credentials: "include"
+        credentials: "include",
       });
 
       const text = await response.text();
 
       if (response.ok) {
         setMessage("✅ Login successful");
-        // Navigate to product page after 1 second
-       
-		setTimeout(() => {
-    const productPort = 3002;
-    const targetUrl = `${window.location.protocol}//${window.location.hostname}:${productPort}`;
-    window.location.href = targetUrl;
-      } 
-    }
-    else {
+        setTimeout(() => {
+          const productPort = 3002;
+          const targetUrl = `${window.location.protocol}//${window.location.hostname}:${productPort}`;
+          window.location.href = targetUrl;
+        }, 1000); // Add missing timeout duration and closing brace
+      } else {
         setMessage(`❌ ${text}`);
       }
     } catch (error) {
@@ -78,7 +72,8 @@ function LoginPage() {
         onChange={(e) => setUsername(e.target.value)}
       />
       {usernameError && <div style={{ color: "red" }}>{usernameError}</div>}
-      <br /><br />
+      <br />
+      <br />
       <input
         type="password"
         placeholder="Password"
@@ -86,9 +81,11 @@ function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
       {passwordError && <div style={{ color: "red" }}>{passwordError}</div>}
-      <br /><br />
+      <br />
+      <br />
       <button onClick={handleLogin}>Login</button>
-      <br /><br />
+      <br />
+      <br />
       {message && <div>{message}</div>}
       <p>
         Don't have an account? <Link to="/register">Register here</Link>
