@@ -52,7 +52,7 @@ function LoginPage() {
           const productPort = 3002;
           const targetUrl = `${window.location.protocol}//${window.location.hostname}:${productPort}`;
           window.location.href = targetUrl;
-        }, 1000); // Add missing timeout duration and closing brace
+        }, 1000);
       } else {
         setMessage(`❌ ${text}`);
       }
