@@ -1,0 +1,36 @@
+import React, { useEffect, useState } from "react";
+
+function ProductList() {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4322/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const addToCart = (product) => {
+    const updatedCart = [...cart, product];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    alert(`${product.name} added to cart ✅`);
+  };
+
+  return (
+    <div style={{ margin: "50px" }}>
+      <h2>All Products</h2>
+      {products.map((p) => (
+        <div key={p.id} style={{ border: "1px solid gray", padding: "10px", marginBottom: "10px" }}>
+          <h3>{p.name}</h3>
+          <p>{p.description}</p>
+          <strong>₹{p.price}</strong>
+          <br />
+          <button onClick={() => addToCart(p)}>Add to Cart 🛒</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default ProductList;
