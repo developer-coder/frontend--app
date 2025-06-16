@@ -26,8 +26,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                echo '🐳 Building Docker image...'
-                bat 'docker build -t frontend-app .'
+                dir('frontend-app') {
+                    echo '🐳 Building Docker image...'
+                    bat 'docker build -t frontend-app .'
+                }
             }
         }
 
