@@ -1,5 +1,5 @@
-# Node modules
 **/node_modules
+**/build
 
 # Git
 .git
@@ -22,3 +22,7 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# ❗ DO NOT IGNORE DOCKERFILE
+# Dockerfile
+# docker-compose.yml
