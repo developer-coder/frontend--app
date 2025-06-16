@@ -1,35 +1,24 @@
-# Ignore all node_modules from every app
+# Node modules
 **/node_modules
 
-# Ignore all build folders (if you're copying only specific build files manually)
-**/build
-
-# Git-related
+# Git
 .git
 .gitignore
 
-# IDE/editor configs
+# IDE/editor
 .vscode
 *.swp
 *.swo
 *.sublime*
 .idea/
 
-# Environment/config
-.env
-.env.local
-.env.development
-.env.production
+# Env & logs
+.env*
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS/System files
+# OS
 .DS_Store
 Thumbs.db
-
-# Docker-related
-Dockerfile
-docker-compose.yml
-.dockerignore
