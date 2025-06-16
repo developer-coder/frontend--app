@@ -39,7 +39,7 @@ pipeline {
                 echo '🚀 Deploying application...'
                 bat 'docker stop frontend-container || exit 0'
         bat 'docker rm frontend-container || exit 0'
-        bat 'docker run -d -p 8091:80 --frontend-container frontend-app'
+		bat 'docker run -d -p 8091:80 --name frontend-container frontend-app'
             }
         }
     }
