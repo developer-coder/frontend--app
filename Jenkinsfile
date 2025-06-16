@@ -14,7 +14,7 @@ pipeline {
                     ]
 
                     for (app in reactApps) {
-                        dir("frontend--app/${app}") {
+                        dir("${app}") {
                             echo "🔧 Building ${app}"
                             bat 'npm install'
                             bat 'npx cross-env CI=false npm run build'
@@ -26,15 +26,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir('frontend--app') {
-                    bat 'docker build -t frontend-app .'
-                }
+                echo '🐳 Building Docker image...'
+                bat 'docker build -t frontend-app .'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo '🚀 Deploying frontend-app on port 8091...'
+                echo '🚀 Deploying application...'
                 bat 'docker stop frontend-container || exit 0'
                 bat 'docker rm frontend-container || exit 0'
                 bat 'docker run -d -p 8091:80 --name frontend-container frontend-app'
