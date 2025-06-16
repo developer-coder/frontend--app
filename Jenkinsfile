@@ -18,7 +18,7 @@ pipeline {
                         dir(app) {
                             echo "🔧 Building ${app}"
                             bat 'npm install'
-                            bat 'npm run build'
+							bat 'npx cross-env CI=false npm run build'
                         }
                     }
                 }
@@ -34,7 +34,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '🚀 Deploying application...'
-                // Add your deployment steps here
+                bat 'docker stop frontend-container || exit 0'
+        bat 'docker rm frontend-container || exit 0'
+        bat 'docker run -d -p 8091:8091 --name frontend-container frontend-app'
             }
         }
     }
