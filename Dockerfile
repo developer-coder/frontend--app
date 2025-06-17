@@ -8,7 +8,7 @@ RUN cd shop-app && npm install && npx cross-env CI=false npm run build && \
     cd ../react-keycloak-app && npm install && npx cross-env CI=false npm run build && \
     cd ../product-app && npm install && npx cross-env CI=false npm run build && \
     cd ../my-login-app && npm install && npx cross-env CI=false npm run build && \
-    cd ../admin-app && npm install && npx cross-env CI=false npm run build
+    cd ../admin-app && npm install keycloak-js && npm install && npx cross-env CI=false npm run build
 
 # Stage 2: Serve with NGINX
 FROM nginx:alpine
