@@ -17,6 +17,13 @@ pipeline {
                         dir("${app}") {
                             echo "🔧 Building ${app}"
                             bat 'npm install'
+
+                            // Extra safety for admin-app to avoid keycloak-js error
+                            if (app == 'admin-app') {
+                                echo "📦 Ensuring keycloak-js is installed for admin-app"
+                                bat 'npm install keycloak-js'
+                            }
+
                             bat 'npx cross-env CI=false npm run build'
                         }
                     }
