@@ -3,11 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App"; // ✅ Now this will work
 import ErrorBoundary from "./ErrorBoundary";
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ErrorBoundary>
-    <App />
+    <BrowserRouter basename="/admin">   // for admin-app
+  <App />
+</BrowserRouter>
   </ErrorBoundary>
 );
 // If you want to start measuring performance in your app, pass a function

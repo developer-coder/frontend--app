@@ -51,13 +51,13 @@ function App() {
   }
 
   return (
-    <Router>
+    
       <Routes>
         <Route path="/" element={<AdminLoginPage />} />
         <Route path="/register" element={<AdminRegisterPage />} />
        
       </Routes>
-    </Router>
+    
   );
 }
 

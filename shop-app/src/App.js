@@ -6,14 +6,14 @@ import CheckoutPage from "./CheckoutPage"; // If exists
 
 function App() {
   return (
-    <BrowserRouter>
+    
       <Routes>
         <Route path="/" element={<UserShopProduct />} />
         <Route path="/cart" element={<CartShop />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         {/* Add other routes like login/register here */}
       </Routes>
-    </BrowserRouter>
+    
   );
 }
 
