@@ -12,7 +12,7 @@ function Product() {
   const fetchProducts = async () => {
     console.log("📡 Calling fetchProducts...");
     try {
-      const res = await fetch("http://localhost:4322/products/list", {
+      const res = await fetch("/api/products/list", {
         credentials: "include",
       });
 
@@ -83,7 +83,7 @@ alert(id ? "✅ Product updated successfully!" : "✅ Product added successfully
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:4322/products/deleteProduct/${id}`, {
+      const res = await fetch(`/api/products/deleteProduct/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
